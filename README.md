@@ -10,6 +10,8 @@
 
 #### 1. Retrieve the last 12 months of precipitation data, plot bar graph of distribution and print summary statistics.
 
+precipitation.png
+
 #### 2. Retrieve the total number of collection stations in the dataset, determine which station has been most active.
 
 #### 3. Retrieve the last 12 months of temperature observation data (TOBS) for the most active station. Plot results on a histogram.
