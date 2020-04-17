@@ -59,7 +59,7 @@ def welcome():
         f"/api/v1.0/start/end/<start>/<end><br>"
     )
 
-#List out available routes on home page
+#Define precipitation page which returns
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     # Create our session (link) from Python to the DB
@@ -70,10 +70,12 @@ def precipitation():
 
     session.close()
 
-    # Convert list of tuples into normal list
-    all_names = list(np.ravel(results))
+    prcp_list = [] 
+    for date, prcp in results:
+        date_dict = {date:prcp}
+        prcp_list.append(date_dict)
 
-    return jsonify(all_names)
+    return jsonify(prcp_list)
 
 @app.route("/api/v1.0/stations")
 def stations():
@@ -103,9 +105,12 @@ def tobs():
     session.close()
 
     # Convert list of tuples into normal list
-    all_names = list(np.ravel(results))
+    temp_list = [] 
+    for date, tobs in results:
+        temp_dict = {date:tobs}
+        temp_list.append(temp_dict)
 
-    return jsonify(all_names)
+    return jsonify(temp_list)
 
 @app.route("/api/v1.0/start/end/<start>/<end>")
 def start_end(start, end):
