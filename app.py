@@ -66,7 +66,7 @@ def precipitation():
     # Create our session to connect to db
     session = Session(engine)
 
-    # Query date and precipitation value for dates after 2016-08-23
+    # Query date and precipitation value for all dates
     results = session.query(Measurement.date, Measurement.prcp).all()
 
     session.close()
@@ -118,7 +118,7 @@ def tobs():
 
     return jsonify(temp_list)
 
-#Define start/end page which provideds TMIN, TMAX, TAVG for dates between provided end and start dates
+#Define start/end dates which provideds TMIN, TMAX, TAVG for dates between provided end and start dates
 @app.route("/api/v1.0/start/end/<start>/<end>")
 def start_end(start, end):
 
@@ -133,7 +133,7 @@ def start_end(start, end):
 
     return jsonify(all_names)
 
-#Define start/end page which provideds TMIN, TMAX, TAVG for dates greater than or equal to provided start date
+#Define start date which provideds TMIN, TMAX, TAVG for dates greater than or equal to provided start date
 @app.route("/api/v1.0/start_only/<start_only>")
 def start_only(start_only):
     
